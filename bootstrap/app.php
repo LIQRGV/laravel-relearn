@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(\App\Http\Middleware\AuthHeader::class);
+        $middleware->removeFromGroup("web", \Illuminate\Cookie\Middleware\EncryptCookies::class);
+        $middleware->removeFromGroup("web", \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class);
+        $middleware->removeFromGroup("web", \Illuminate\Session\Middleware\StartSession::class);
+        $middleware->removeFromGroup("web", \Illuminate\View\Middleware\ShareErrorsFromSession::class);
+        $middleware->removeFromGroup("web", \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

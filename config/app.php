@@ -105,6 +105,10 @@ return [
         ),
     ],
 
+    // this will override provider on vendor/laravel/framework/config/app.providers
+//    'providers' => [
+//    ],
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
